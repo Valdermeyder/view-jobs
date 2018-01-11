@@ -1,8 +1,17 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
-import {JobList} from "./job/JobList";
-import {getAllJobs} from "./job/jobsRetriever";
+import Jobs from './job/Jobs'
+import Job from './job/Job'
+import {Link, Route} from "react-router-dom";
+
+const jobsPath = '/jobs'
+
+const Home = () => (
+	<p className="App-intro">
+		Simple mock up application to view jobs
+	</p>
+)
 
 class App extends Component {
 	render() {
@@ -12,10 +21,15 @@ class App extends Component {
 					<img src={logo} className="App-logo" alt="logo"/>
 					<h1 className="App-title">Welcome to View Jobs</h1>
 				</header>
-				<p className="App-intro">
-					Simple mock up application to view jobs
-				</p>
-				<JobList jobs={getAllJobs()}/>
+				<nav>
+					<Link to="/">Home</Link>
+					<Link to="/jobs">Jobs</Link>
+				</nav>
+				<div>
+					<Route path={jobsPath + "/:jobId"} component={Job}></Route>
+					<Route exact path={jobsPath} component={Jobs}></Route>
+					<Route exact path="/" component={Home}></Route>
+				</div>
 			</div>
 		);
 	}
