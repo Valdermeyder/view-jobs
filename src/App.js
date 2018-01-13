@@ -3,9 +3,21 @@ import logo from './logo.svg';
 import './App.css';
 import Jobs from './job/Jobs'
 import Job from './job/Job'
-import {Link, Route} from "react-router-dom";
+import {Route} from "react-router-dom";
+import Menu from "./nav/Menu";
 
 const jobsPath = '/jobs'
+
+const menuItems = [
+	{
+		path: '/',
+		text: 'Home'
+	},
+	{
+		path: jobsPath,
+		text: 'Jobs'
+	}
+]
 
 const Home = () => (
 	<p className="App-intro">
@@ -22,13 +34,12 @@ class App extends Component {
 					<h1 className="App-title">Welcome to View Jobs</h1>
 				</header>
 				<nav>
-					<Link to="/">Home</Link>
-					<Link to="/jobs">Jobs</Link>
+					<Menu menuItems={menuItems}/>
 				</nav>
 				<div>
-					<Route path={jobsPath + "/:jobId"} component={Job}></Route>
-					<Route exact path={jobsPath} component={Jobs}></Route>
-					<Route exact path="/" component={Home}></Route>
+					<Route path={jobsPath + "/:jobId"} component={Job}/>
+					<Route exact path={jobsPath} component={Jobs}/>
+					<Route exact path="/" component={Home}/>
 				</div>
 			</div>
 		);
