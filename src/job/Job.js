@@ -1,5 +1,7 @@
 import React from 'react'
+import JobDetails from "./JobDetails";
+import {getJob} from "./jobsRetriever";
 
-export default () => (
-	<h1>Job Details</h1>
+export default ({match}) => (
+	<JobDetails job={getJob(match.params.jobId)}></JobDetails>
 )
