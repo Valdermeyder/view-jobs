@@ -1,10 +1,14 @@
 import React from 'react'
 import {Link} from "react-router-dom";
+import {GridTile} from "material-ui";
 
 export const JobListItem = ({job, jobsUrl}) => (
-	<div>
-		<h2>{job.title}</h2>
-		<p>{job.location}</p>
-		<Link to={jobsUrl + '/' + job.id}>Details...</Link>
-	</div>
+	<Link to={jobsUrl + '/' + job.id}>
+		<GridTile
+			title={job.title}
+			subtitle={<span>in <b>{job.location}</b></span>}
+		>
+			<img src={job.img} alt={job.title}/>
+		</GridTile>
+	</Link>
 )

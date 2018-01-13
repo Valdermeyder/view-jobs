@@ -7,6 +7,6 @@ const style = {
 }
 
 export default ({menuItems}) => menuItems.map((menuItem) => (
-		<Menu style={style}>
+		<Menu key={menuItem.path} style={style}>
 			<MenuItem containerElement={<Link to={menuItem.path}/>} primaryText={menuItem.text}/>
 		</Menu>))
