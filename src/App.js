@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Jobs from './job/Jobs'
 import Job from './job/Job'
 import {Route} from "react-router-dom";
 import Menu from "./nav/Menu";
+import {AppBar} from "material-ui";
 
 const jobsPath = '/jobs'
 
@@ -29,9 +29,8 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
-				<header className="App-header">
-					<img src={logo} className="App-logo" alt="logo"/>
-					<h1 className="App-title">Welcome to View Jobs</h1>
+				<header>
+					<AppBar showMenuIconButton={false} title="Welcome to View Jobs"/>
 				</header>
 				<nav>
 					<Menu menuItems={menuItems}/>

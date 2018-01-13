@@ -3,8 +3,7 @@ import {Menu, MenuItem} from "material-ui";
 import {Link} from "react-router-dom";
 
 const style = {
-	display: 'inline-block',
-	margin: '16px 0 16px 0',
+	display: 'inline-block'
 }
 
 export default ({menuItems}) => menuItems.map((menuItem) => (
