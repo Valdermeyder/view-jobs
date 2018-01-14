@@ -1,21 +1,40 @@
-import {getAllJobs, getJob, jobs} from "./jobsRetriever";
+import {getAllJobs, getJob} from "./jobsRetriever";
+import {generateJobs, generateJob} from './jobGenerator';
+
+jest.mock('./jobGenerator', () => ({
+	generateJobs: jest.fn(),
+	generateJob: jest.fn()
+}))
 
 describe('#getAllJobs', () => {
-	test('should return dummy jobs', () => {
+	let jobs
+
+	beforeEach(() => {
+		jobs = [{id: 1, title: 'React'}]
+		generateJobs.mockReturnValue(jobs)
+	})
+
+	test('should generate 4 jobs', () => {
+		getAllJobs()
+
+		expect(generateJobs).toBeCalledWith(4)
+	})
+
+	test('should return generated jobs', () => {
 		expect(getAllJobs()).toBe(jobs)
 	})
 })
 
 describe('#getJob', () => {
-	test('should return job when it is present in dummy jobs', () => {
-		expect(getJob(jobs[0].id)).toBe(jobs[0])
+	const id = 1
+	let job
+
+	beforeEach(() => {
+		job = {id, title: 'React'}
+		generateJob.mockReturnValue(job)
 	})
 
-	test('should return job when it is present in dummy jobs and id is string', () => {
-		expect(getJob(`${jobs[0].id}`)).toBe(jobs[0])
-	})
-
-	test('should return undefined when jobs id is not present in dummy jobs', () => {
-		expect(getJob(5)).toBeUndefined()
+	test('should return generated job', () => {
+		expect(getJob(id)).toBe(job)
 	})
 })
