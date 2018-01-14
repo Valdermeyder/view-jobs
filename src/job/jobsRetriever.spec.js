@@ -16,6 +16,6 @@ describe('#getJob', () => {
 	})
 
 	test('should return undefined when jobs id is not present in dummy jobs', () => {
-		expect(getJob(3)).toBeUndefined()
+		expect(getJob(5)).toBeUndefined()
 	})
 })
