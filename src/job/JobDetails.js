@@ -1,20 +1,26 @@
 import React from 'react'
-import {Card, CardHeader} from "material-ui";
+import {Card, CardHeader} from 'material-ui'
 import JobDescription from './JobDescription'
+import {getJobDetails} from './jobSelectors'
+import {connect} from 'react-redux'
 
 const headerStyleAligner = {paddingLeft: 90};
-export default ({job = {}}) => (
-	<div>
-		<Card>
-			<CardHeader
-				title={job.title}
-				subtitle={job.location}
-				titleStyle={headerStyleAligner}
-				subtitleStyle={headerStyleAligner}
-			/>
-			{Object.keys(job.description).map((description) =>
-				<JobDescription key={description} description={job.description[description]}/>)
-			}
-		</Card>
-	</div>
+const JobDetails = ({job = {description: {}}}) => (
+	<Card>
+		<CardHeader
+			title={job.title}
+			subtitle={job.location}
+			titleStyle={headerStyleAligner}
+			subtitleStyle={headerStyleAligner}
+		/>
+		{Object.keys(job.description).map((description) =>
+			<JobDescription key={description} description={job.description[description]}/>)
+		}
+	</Card>
 )
+
+const mapStateToProps = state => ({
+	job: getJobDetails(state)
+})
+
+export default connect(mapStateToProps)(JobDetails)

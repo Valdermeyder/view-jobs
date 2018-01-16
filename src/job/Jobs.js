@@ -1,7 +1,22 @@
-import React from 'react'
-import {getAllJobs} from "./jobsRetriever";
-import {JobList} from "./JobList";
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import JobList from './JobList'
+import {fetchJobsAsync} from './jobActions'
 
-export default ({match}) => (
-	<JobList jobs={getAllJobs()} jobsUrl={match.url}/>
-)
+class Jobs extends Component {
+	componentWillMount() {
+		this.props.fetchJobs()
+	}
+
+	render() {
+		return <JobList/>
+	}
+}
+
+const mapDispatchToProps = dispatch => ({
+	fetchJobs: () => {
+		dispatch(fetchJobsAsync())
+	}
+})
+
+export default connect(null, mapDispatchToProps)(Jobs)
