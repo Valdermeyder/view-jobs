@@ -15,7 +15,7 @@ describe('#getAllJobs', () => {
 	})
 
 	test('should generate 4 jobs', () =>
-		getAllJobs().then(() => expect(generateJobs).toBeCalledWith(4)))
+		getAllJobs().then(() => expect(generateJobs).toBeCalled()))
 
 	test('should return generated jobs', () =>
 		getAllJobs().then((receiveJobs) => expect(receiveJobs).toBe(jobs)))
