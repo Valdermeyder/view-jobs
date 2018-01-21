@@ -1,17 +1,17 @@
-import React, {Component} from 'react';
-import './App.css';
-import Menu from './nav/Menu';
+import React, {Component} from 'react'
+import Menu from './nav/Menu'
 import Routes from './nav/Routes'
-import {AppBar} from 'material-ui';
+import {AppBar} from 'material-ui'
+import {textAlignCenter} from './style/commonStyles'
 
 class App extends Component {
 	render() {
 		return (
-			<div className='App'>
-				<header>
+			<div>
+				<header style={textAlignCenter}>
 					<AppBar showMenuIconButton={false} title='Welcome to View Jobs'/>
 				</header>
-				<nav>
+				<nav style={textAlignCenter}>
 					<Menu/>
 				</nav>
 				<Routes/>

@@ -3,6 +3,7 @@ import {Card, CardHeader} from 'material-ui'
 import JobDescription from './JobDescription'
 import {getJobDetails} from './jobSelectors'
 import {connect} from 'react-redux'
+import {textAlignCenter} from '../style/commonStyles'
 
 const headerStyleAligner = {paddingLeft: 90};
 const JobDetails = ({job = {description: {}}}) => (
@@ -12,6 +13,7 @@ const JobDetails = ({job = {description: {}}}) => (
 			subtitle={job.location}
 			titleStyle={headerStyleAligner}
 			subtitleStyle={headerStyleAligner}
+			style={textAlignCenter}
 		/>
 		{Object.keys(job.description).map((description) =>
 			<JobDescription key={description} description={job.description[description]}/>)

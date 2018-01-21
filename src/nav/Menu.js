@@ -5,7 +5,8 @@ import {connect} from 'react-redux';
 import {getEntityPath} from './pathSelector';
 
 const style = {
-	display: 'inline-block'
+	display: 'inline-block',
+	textAlign: 'center'
 }
 
 const MenuBar = ({menuItems}) => menuItems.map((menuItem) => (

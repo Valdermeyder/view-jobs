@@ -3,6 +3,7 @@ import JobListItem from './JobListItem'
 import {GridList, Subheader} from 'material-ui'
 import {getJobs} from './jobSelectors'
 import {connect} from 'react-redux'
+import {textAlignCenter} from '../style/commonStyles'
 
 const styles = {
 	root: {
@@ -14,6 +15,10 @@ const styles = {
 		width: 500,
 		overflowY: 'auto',
 	},
+	subHeader: {
+		...textAlignCenter,
+		paddingLeft: 0
+	}
 }
 
 const JobList = ({jobs}) => (
@@ -22,7 +27,7 @@ const JobList = ({jobs}) => (
 			cellHeight={180}
 			style={styles.gridList}
 		>
-			<Subheader>Jobs</Subheader>
+			<Subheader style={styles.subHeader}>Jobs</Subheader>
 			{jobs.map(job => <JobListItem key={job.id} job={job}/>)}
 		</GridList>
 	</div>
