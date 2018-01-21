@@ -11,9 +11,12 @@ import thunkMiddleware from 'redux-thunk'
 import {jobDetailsReducer, jobsReducer} from './job/jobReducers'
 import {entityPaths} from './nav/pathConfiguration'
 
+const preloadedState = window.__PRELOADED_STATE__ || {}
+delete window.__PRELOADED_STATE__
+
 const store = createStore(
 	combineReducers({entityPaths: pathReducer, jobs: jobsReducer, job: jobDetailsReducer}),
-	{entityPaths},
+	{...preloadedState, entityPaths},
 	applyMiddleware(thunkMiddleware))
 
 ReactDOM.render((
