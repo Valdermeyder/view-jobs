@@ -1,7 +1,7 @@
 export const generateJob = index => ({
 	title: 'Job Title ' + index,
 	location: 'Location ' + index,
-	img: 'http://via.placeholder.com/250x180',
+	img: 'https://placem.at/people?h=180&random=' + index,
 	description: {
 		about: {title: 'About project', text: 'Cool project ' + index},
 		requirements: {title: 'Requirements', text: 'Skill ' + index}
